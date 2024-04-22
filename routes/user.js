@@ -3,6 +3,8 @@ const userRegistrationMiddleware = require("../middlewares/userRegistrationMiddl
 const userValidiationMiddleware = require("../middlewares/userValidiationMiddleware");
 const userAuthenticationMiddleware = require("../middlewares/userAuthenticationMiddleware");
 
+const bookPurchaseMiddleware = require("../middlewares/bookPurchaseMiddleware");
+
 const app = express();
 
 app.use(express.json());
@@ -18,5 +20,7 @@ app.post(
   userValidiationMiddleware,
   userAuthenticationMiddleware
 );
+
+app.post("/user/purchased/:bookId", bookPurchaseMiddleware);
 
 app.listen(3000);
