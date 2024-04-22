@@ -11,10 +11,16 @@ const AdminSchema = mongoose.model("Admins", {
 const UserSchema = mongoose.model("Users", {
   email: String,
   password: String,
-  purchasedCourses: [
+  purchasedBooks: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Course",
+      bookId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "BooksSchema",
+      },
+      purchaseDate: {
+        type: Date,
+        default: Date.now,
+      },
     },
   ],
 });
